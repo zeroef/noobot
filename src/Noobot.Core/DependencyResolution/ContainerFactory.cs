@@ -6,6 +6,7 @@ using Common.Logging;
 using Noobot.Core.Configuration;
 using Noobot.Core.MessagingPipeline.Middleware;
 using Noobot.Core.MessagingPipeline.Middleware.StandardMiddleware;
+using Noobot.Core.Plugins;
 using Noobot.Core.Plugins.StandardPlugins;
 using StructureMap;
 using StructureMap.Pipeline;
@@ -86,6 +87,11 @@ namespace Noobot.Core.DependencyResolution
             {
                 x.WithDefaultConventions();
 
+                if (_configuration.AutoDiscoverMiddleware)
+                {
+                    x.AddAllTypesOf<IMiddleware>();
+                }
+
                 // scan assemblies that we are loading pipelines from
                 foreach (Type middlewareType in pipeline)
                 {
@@ -149,6 +155,11 @@ namespace Noobot.Core.DependencyResolution
 
             registry.Scan(x =>
             {
+                if (_configuration.AutoDiscoverPlugins)
+                {
+                    x.AddAllTypesOf<IPlugin>();
+                }
+
                 // scan assemblies that we are loading pipelines from
                 foreach (Type pluginType in pluginTypes)
                 {
