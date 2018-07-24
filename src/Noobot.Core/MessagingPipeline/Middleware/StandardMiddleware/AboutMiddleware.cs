@@ -23,9 +23,9 @@ namespace Noobot.Core.MessagingPipeline.Middleware.StandardMiddleware
 
         private IEnumerable<ResponseMessage> AboutHandler(IncomingMessage message, IValidHandle matchedHandle)
         {
-            yield return message.ReplyDirectlyToUser("Noobot - Created by Simon Colmer " + DateTime.Now.Year);
-            yield return message.ReplyDirectlyToUser("I am an extensible SlackBot built in C# using loads of awesome open source projects.");
-            yield return message.ReplyDirectlyToUser("Please find more at http://github.com/noobot/noobot");
+            yield return message.ReplyDirectlyToUser("uBot - a sassy uInform bot");
+            yield return message.ReplyDirectlyToUser("I am a SlackBot built in C# using piles of spaghet");
+            yield return message.ReplyDirectlyToUser("Contact Matt Wilson (uConnect|IET) for help / troubleshooting");
         }
     }
 }
